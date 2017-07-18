@@ -19,6 +19,8 @@ import com.rubenpla.develop.ikomobitrendinggif.R;
 
 import java.util.List;
 
+import dagger2.annotation.ActivityContext;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
