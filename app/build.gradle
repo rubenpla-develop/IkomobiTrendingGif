@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 26
@@ -11,20 +12,61 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    signingConfigs {
+        development {
+            storeFile file('/Users/alten/Repositories/IkomobiTrendingGif/buildsystem/iko.keystore.jks')
+            storePassword "android"
+            keyAlias "androiddebugkey"
+            keyPassword "android"
+        }
+    }
+
     buildTypes {
+        debug {
+            applicationIdSuffix ".giphy.debug"
+            signingConfig signingConfigs.development
+            minifyEnabled true
+            proguardFile 'proguard-android-debug.txt'
+        }
+
         release {
+            applicationIdSuffix ".giphy.release"
+            signingConfig signingConfigs.development
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        demo {
+            buildConfigField 'String', 'GIPHY_API_KEY_DEBUG', '\"dd51292525434a9b878b055772f98cdc\"'
+            buildConfigField 'String', 'GIPHY_API_KEY_RELEASE', '\"\"' //TODO pending api key for this flavor
+            proguardFile 'proguard-demo.txt'
+        }
+
+        cliente {
+            applicationId "net.inverline.bancosabadell.officelocator.activobank"
+            buildConfigField 'String', 'GIPHY_API_KEY_DEBUG', '\"dd51292525434a9b878b055772f98cdc\"'
+            buildConfigField 'String', 'GIPHY_API_KEY_RELEASE', '\"\"' //TODO pending api key for this flavor
+            proguardFile 'proguard-cliente.txt'
         }
     }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.+'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //  compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
+    compile 'com.android.support:palette-v7:26.+'
+    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    apt 'com.jakewharton:butterknife-compiler:8.5.1'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
+    compile 'com.github.bumptech.glide:glide:3.5.2'
+    compile 'com.squareup.okhttp:okhttp:2.2.0'
 }
