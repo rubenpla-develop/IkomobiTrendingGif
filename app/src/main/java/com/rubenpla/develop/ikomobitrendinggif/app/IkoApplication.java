@@ -1,18 +1,31 @@
 package com.rubenpla.develop.ikomobitrendinggif.app;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.rubenpla.develop.ikomobitrendinggif.BuildConfig;
 
-/**
- * Created by alten on 18/7/17.
- */
+import dagger2.component.ApplicationComponent;
+import dagger2.component.DaggerApplicationComponent;
+import dagger2.module.ApplicationModule;
 
 public class IkoApplication extends Application {
+
+    protected ApplicationComponent applicationComponent;
+
+    public static IkoApplication get(Context context) {
+        return (IkoApplication) context.getApplicationContext();
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        applicationComponent = DaggerApplicationComponent
+                .builder()
+                .applicationModule(new ApplicationModule(this))
+                .build();
+        applicationComponent.inject(this);
     }
 
     public static String getGiphyApiKey() {
@@ -23,5 +36,9 @@ public class IkoApplication extends Application {
             hockeyappId = BuildConfig.GIPHY_API_KEY_RELEASE;
         }
         return hockeyappId;
+    }
+
+    public ApplicationComponent getComponent() {
+        return applicationComponent;
     }
 }
