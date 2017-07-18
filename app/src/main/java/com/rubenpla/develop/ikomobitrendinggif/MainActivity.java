@@ -33,6 +33,17 @@ public class MainActivity extends AppCompatActivity implements OnGifsRetrievedLi
     @BindView(R.id.rv_images)
     RecyclerView recyclerView;
 
+    public ActivityComponent getActivityComponent() {
+        if (activityComponent == null) {
+            activityComponent = DaggerActivityComponent.builder()
+                    .activityModule(new ActivityModule(this, this))
+                    .applicationComponent(IkoApplication.get(this).getComponent())
+                    .build();
+        }
+
+        return activityComponent;
+    }
+
     @BindView(R.id.swipe_refresh_gif_layout)
     SwipeRefreshLayout swipeRefreshLayout;
 
@@ -57,8 +68,8 @@ public class MainActivity extends AppCompatActivity implements OnGifsRetrievedLi
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        imageLoader.getGiphy();
 
+        imageLoader.getGiphy();
         swipeRefreshLayout.setOnRefreshListener(this);
     }
 
