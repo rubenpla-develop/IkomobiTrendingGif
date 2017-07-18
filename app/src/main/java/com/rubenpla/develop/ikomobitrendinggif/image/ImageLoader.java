@@ -25,6 +25,12 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import dagger2.annotation.ActivityContext;
+
+@Singleton
 public class ImageLoader {
 
     private final String TAG = ImageLoader.class.getSimpleName();
@@ -33,12 +39,11 @@ public class ImageLoader {
     private Activity activity;
     private OnGifsRetrievedListener gifListener;
 
-    public ImageLoader(Activity activity, final OnGifsRetrievedListener gifListener) {
+    @Inject
+    public ImageLoader(@ActivityContext Activity activity, final OnGifsRetrievedListener gifListener) {
         this.activity = activity;
         this.gifListener = gifListener;
         giphyData = new GiphyModel();
-
-        getGiphy();
     }
 
     public void getGiphy () {

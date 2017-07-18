@@ -19,12 +19,14 @@ import com.rubenpla.develop.ikomobitrendinggif.R;
 
 import java.util.List;
 
+import dagger2.annotation.ActivityContext;
+
 public class GifGalleryAdapter extends RecyclerView.Adapter<GifGalleryAdapter.MyViewHolder>  {
 
     private List<String> trendingGifsList;
     private Activity context;
 
-    public GifGalleryAdapter(Activity context, List<String> spacePhotos) {
+    public GifGalleryAdapter(@ActivityContext Activity context, List<String> spacePhotos) {
         this.context = context;
         this.trendingGifsList = spacePhotos;
     }
