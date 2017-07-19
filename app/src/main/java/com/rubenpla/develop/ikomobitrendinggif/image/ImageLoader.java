@@ -2,6 +2,7 @@ package com.rubenpla.develop.ikomobitrendinggif.image;
 
 import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.widget.Toast;
@@ -42,6 +43,7 @@ public class ImageLoader {
 
     public void getGiphy () {
         final String API_KEY = IkoApplication.getGiphyApiKey();
+        final Resources resources = activity.getResources();
 
         String url = "https://api.giphy.com/v1/gifs/trending?" +
                 "api_key=" + API_KEY
@@ -50,14 +52,16 @@ public class ImageLoader {
 
          if (API_KEY.length() == 0) {
              AlertDialog.Builder builder = new AlertDialog.Builder(activity)
-                     .setTitle("AVISO")
-                     .setMessage("No se ha podido tener acceso a la galeria")
+                     .setTitle(resources.getString(R.string.img_loader_dialog_warning_title))
+                     .setMessage(resources.getString(R.string.img_loader_dialog_warning_message_body))
                      .setIcon(R.mipmap.ic_launcher_round)
-                     .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                     .setNeutralButton(resources.getString(R.string.dialog_button_accept),
+                             new DialogInterface.OnClickListener() {
                          @Override
                          public void onClick(DialogInterface dialogInterface, int i) {
-                             Toast.makeText(activity.getApplicationContext(), "En breve dispondras" +
-                                     "del contenido. Gracias.", Toast.LENGTH_SHORT).show();
+                             Toast.makeText(activity.getApplicationContext(),
+                                     resources.getString(R.string.img_loader_dialog_warning_toast_message),
+                                     Toast.LENGTH_SHORT).show();
                          }
                      })
                      .setCancelable(false);
