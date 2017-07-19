@@ -46,7 +46,6 @@ android {
         }
 
         cliente {
-            applicationId "net.inverline.bancosabadell.officelocator.activobank"
             buildConfigField 'String', 'GIPHY_API_KEY_DEBUG', '\"dd51292525434a9b878b055772f98cdc\"'
             buildConfigField 'String', 'GIPHY_API_KEY_RELEASE', '\"\"' //TODO pending api key for this flavor
             proguardFile 'proguard-cliente.txt'
