@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">IkomobiTrendingGif</string>
+    <string name="img_loader_dialog_warning_title">Warning</string>
+    <string name="img_loader_dialog_warning_message_body">Could not get access to gallery.</string>
+    <string name="dialog_button_accept">Accept</string>
+    <string name="img_loader_dialog_warning_toast_message">Shortly you will get new content.
+        Thanks.</string>
 </resources>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">IkomobiTrendingGif</string>
+    <string name="img_loader_dialog_warning_title">Aviso</string>
+    <string name="img_loader_dialog_warning_message_body">No se ha podido acceder a la galeria de
+        imágenes.</string>
+    <string name="dialog_button_accept">Aceptar</string>
+    <string name="img_loader_dialog_warning_toast_message">En breve dispondrás de nuevo contenido.
+        Gracias</string>
+
+</resources>
