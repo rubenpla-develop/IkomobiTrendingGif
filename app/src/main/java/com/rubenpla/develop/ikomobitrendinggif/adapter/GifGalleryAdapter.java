@@ -19,14 +19,17 @@ import com.rubenpla.develop.ikomobitrendinggif.R;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class GifGalleryAdapter extends RecyclerView.Adapter<GifGalleryAdapter.MyViewHolder>  {
 
     private List<String> trendingGifsList;
     private Activity context;
 
-    public GifGalleryAdapter(Activity context, List<String> spacePhotos) {
+    public GifGalleryAdapter(Activity context, List<String> trendingGifsList) {
         this.context = context;
-        this.trendingGifsList = spacePhotos;
+        this.trendingGifsList = trendingGifsList;
     }
 
     @Override
@@ -42,23 +45,7 @@ public class GifGalleryAdapter extends RecyclerView.Adapter<GifGalleryAdapter.My
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        ImageView imageView = holder.gifImageView;
-
-        Glide.with(context)
-                .load(trendingGifsList.get(position))
-                .thumbnail(0.1f)
-                .placeholder(R.mipmap.ic_launcher_round)
-                .error(R.drawable.ic_cloud_off_red)
-                .priority(Priority.HIGH)
-                .diskCacheStrategy(DiskCacheStrategy.SOURCE)
-                .centerCrop()
-                .into(new GlideDrawableImageViewTarget(imageView) {
-                    @Override
-                    public void onResourceReady(GlideDrawable resource,
-                                                GlideAnimation<? super GlideDrawable> animation) {
-                        super.onResourceReady(resource, animation);
-                    }
-                });
+        holder.bindGif(position);
     }
 
     @Override
@@ -68,13 +55,30 @@ public class GifGalleryAdapter extends RecyclerView.Adapter<GifGalleryAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public ImageView gifImageView;
+        @BindView(R.id.iv_photo)
+        ImageView gifImageView;
 
         public MyViewHolder(View itemView) {
-
             super(itemView);
-            gifImageView = (ImageView) itemView.findViewById(R.id.iv_photo);
+            ButterKnife.bind(this, itemView);
             itemView.setOnClickListener(this);
+        }
+
+        public void bindGif(int position) {
+            Glide.with(context)
+                    .load(trendingGifsList.get(position))
+                    .thumbnail(0.1f)
+                    .placeholder(R.mipmap.ic_launcher_round)
+                    .error(R.drawable.ic_cloud_off_red)
+                    .priority(Priority.HIGH)
+                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .into(new GlideDrawableImageViewTarget(gifImageView) {
+                        @Override
+                        public void onResourceReady(GlideDrawable resource,
+                                                    GlideAnimation<? super GlideDrawable> animation) {
+                            super.onResourceReady(resource, animation);
+                        }
+                    });
         }
 
         @Override
