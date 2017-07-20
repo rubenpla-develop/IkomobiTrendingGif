@@ -16,12 +16,12 @@ public class IkoApplication extends Application {
     }
 
     public static String getGiphyApiKey() {
-        String hockeyappId = "";
+        String giphyId = "";
         if (BuildConfig.BUILD_TYPE.equals(ReleaseType.DEBUG)) {
-            hockeyappId = BuildConfig.GIPHY_API_KEY_DEBUG;
+            giphyId = BuildConfig.GIPHY_API_KEY_DEBUG;
         } else if (BuildConfig.BUILD_TYPE.equals(ReleaseType.RELEASE)) {
-            hockeyappId = BuildConfig.GIPHY_API_KEY_RELEASE;
+            giphyId = BuildConfig.GIPHY_API_KEY_RELEASE;
         }
-        return hockeyappId;
+        return giphyId;
     }
 }

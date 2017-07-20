@@ -41,7 +41,7 @@ public class ImageLoader {
         getGiphy();
     }
 
-    public void getGiphy () {
+    public void getGiphy() {
         final String API_KEY = IkoApplication.getGiphyApiKey();
         final Resources resources = activity.getResources();
 
@@ -96,8 +96,9 @@ public class ImageLoader {
                                 }
                             });
                         } else {
-                            Toast.makeText(activity, "Se ha producido un error recuperando " +
-                                    "los datos!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(activity.getApplicationContext(),
+                                    resources.getString(R.string.img_loader_dialog_warning_message_body),
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                     catch (IOException e) {
@@ -108,7 +109,11 @@ public class ImageLoader {
                     }
                 }
             });
-        } else {}
+        } else {
+            Toast.makeText(activity.getApplicationContext(),
+                    resources.getString(R.string.img_loader_dialog_warning_toast_message),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     private ArrayList<String> getGif(String jsonData) throws JSONException {

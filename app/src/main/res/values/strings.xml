@@ -5,4 +5,6 @@
     <string name="dialog_button_accept">Accept</string>
     <string name="img_loader_dialog_warning_toast_message">Shortly you will get new content.
         Thanks.</string>
+    <string name="img_loader_toast_no_connection_available">No Internet or mobile network
+        available.</string>
 </resources>
