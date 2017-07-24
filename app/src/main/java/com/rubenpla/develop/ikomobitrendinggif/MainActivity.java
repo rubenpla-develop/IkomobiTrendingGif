@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements OnGifsRetrievedLi
     public ActivityComponent getActivityComponent() {
         if (activityComponent == null) {
             activityComponent = DaggerActivityComponent.builder()
-                    .activityModule(new ActivityModule(this, this))
+                    .activityModule(new ActivityModule(this))
                     .applicationComponent(IkoApplication.get(this).getComponent())
                     .build();
         }
