@@ -35,15 +35,18 @@ public class ImageLoader {
 
     private final String TAG = ImageLoader.class.getSimpleName();
 
+    private int num_results = 20;
     private GiphyModel giphyData;
     private Activity activity;
     private OnGifsRetrievedListener gifListener;
 
     @Inject
-    public ImageLoader(@ActivityContext Activity activity, final OnGifsRetrievedListener gifListener) {
+    public ImageLoader(Activity activity, GiphyModel giphyData) {
         this.activity = activity;
-        this.gifListener = gifListener;
-        giphyData = new GiphyModel();
+        this.gifListener = (OnGifsRetrievedListener) activity;
+        this.giphyData = giphyData;
+
+        getGiphy();
     }
 
     public void getGiphy() {
@@ -52,7 +55,7 @@ public class ImageLoader {
 
         String url = "https://api.giphy.com/v1/gifs/trending?" +
                 "api_key=" + API_KEY
-                + "&limit=20"
+                + "&limit=" + num_results
                 + "&rating=G";
 
          if (API_KEY.length() == 0) {
