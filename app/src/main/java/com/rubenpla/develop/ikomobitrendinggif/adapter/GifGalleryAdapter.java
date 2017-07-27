@@ -1,6 +1,5 @@
 package com.rubenpla.develop.ikomobitrendinggif.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -27,11 +26,20 @@ import dagger2.annotation.ActivityContext;
 public class GifGalleryAdapter extends RecyclerView.Adapter<GifGalleryAdapter.MyViewHolder>  {
 
     private List<String> trendingGifsList;
-    private Activity context;
+    private Context context;
 
-    public GifGalleryAdapter(Activity context, List<String> trendingGifsList) {
+    public GifGalleryAdapter(Context context, List<String> trendingGifsList) {
         this.context = context;
         this.trendingGifsList = trendingGifsList;
+    }
+
+    public synchronized void setData(Context context, List<String> updatedList) {
+        if (updatedList != null & updatedList.size() > 0) {
+            this.context = context;
+            this.trendingGifsList = updatedList;
+        }
+
+        notifyDataSetChanged();
     }
 
     @Override
