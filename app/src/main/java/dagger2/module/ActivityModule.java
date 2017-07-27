@@ -5,7 +5,6 @@ import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.rubenpla.develop.ikomobitrendinggif.callback.OnGifsRetrievedListener;
 import com.rubenpla.develop.ikomobitrendinggif.image.ImageLoader;
 import com.rubenpla.develop.ikomobitrendinggif.model.GiphyModel;
 
@@ -37,5 +36,6 @@ public class ActivityModule {
     RecyclerView.LayoutManager provideLayoutManager() { return  new GridLayoutManager(activity, 2);}
 
     @Provides
+
     ImageLoader provideImageLoaderController() { return new ImageLoader(activity, new GiphyModel()); }
 }

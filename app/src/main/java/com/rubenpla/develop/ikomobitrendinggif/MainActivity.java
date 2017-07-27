@@ -9,7 +9,6 @@ import com.rubenpla.develop.ikomobitrendinggif.adapter.GifGalleryAdapter;
 import com.rubenpla.develop.ikomobitrendinggif.app.IkoApplication;
 import com.rubenpla.develop.ikomobitrendinggif.callback.OnGifsRetrievedListener;
 import com.rubenpla.develop.ikomobitrendinggif.image.ImageLoader;
-import com.rubenpla.develop.ikomobitrendinggif.model.GiphyModel;
 
 import java.util.List;
 
@@ -24,7 +23,6 @@ import dagger2.module.ActivityModule;
 public class MainActivity extends AppCompatActivity implements OnGifsRetrievedListener,
         SwipeRefreshLayout.OnRefreshListener {
 
-
     private ActivityComponent activityComponent;
 
     @Inject ImageLoader imageLoader;
@@ -33,24 +31,13 @@ public class MainActivity extends AppCompatActivity implements OnGifsRetrievedLi
     @BindView(R.id.rv_images)
     RecyclerView recyclerView;
 
-    public ActivityComponent getActivityComponent() {
-        if (activityComponent == null) {
-            activityComponent = DaggerActivityComponent.builder()
-                    .activityModule(new ActivityModule(this))
-                    .applicationComponent(IkoApplication.get(this).getComponent())
-                    .build();
-        }
-
-        return activityComponent;
-    }
-
     @BindView(R.id.swipe_refresh_gif_layout)
     SwipeRefreshLayout swipeRefreshLayout;
 
     public ActivityComponent getActivityComponent() {
         if (activityComponent == null) {
             activityComponent = DaggerActivityComponent.builder()
-                    .activityModule(new ActivityModule(this, this))
+                    .activityModule(new ActivityModule(this))
                     .applicationComponent(IkoApplication.get(this).getComponent())
                     .build();
         }
@@ -91,8 +78,8 @@ public class MainActivity extends AppCompatActivity implements OnGifsRetrievedLi
 
     @Override
     public void onRefresh() {
-        if (gifLoader != null) {
-            gifLoader.getGiphy();
+        if (imageLoader != null) {
+            imageLoader.getGiphy();
         }
     }
 }
