@@ -11,7 +11,7 @@ import com.rubenpla.develop.ikomobitrendinggif.R;
 import com.rubenpla.develop.ikomobitrendinggif.app.IkoApplication;
 import com.rubenpla.develop.ikomobitrendinggif.callback.OnGifsRetrievedListener;
 import com.rubenpla.develop.ikomobitrendinggif.model.GiphyModel;
-import com.rubenpla.develop.ikomobitrendinggif.util.ConnectivityUtil;
+import com.rubenpla.develop.ikomobitrendinggif.util.Utils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -71,7 +71,9 @@ public class ImageLoader {
              return;
          }
 
-        if (ConnectivityUtil.isNetworkAvailable(activity)) {
+        Utils utils = new Utils();
+
+        if (utils.isNetworkAvailable(activity)) {
             OkHttpClient client = new OkHttpClient();
             Request request = new Request.Builder()
                     .url(url)
