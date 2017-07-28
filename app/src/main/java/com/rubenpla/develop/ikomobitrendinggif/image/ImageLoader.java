@@ -28,8 +28,6 @@ import java.util.ArrayList;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import dagger2.annotation.ActivityContext;
-
 @Singleton
 public class ImageLoader {
 

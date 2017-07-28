@@ -12,8 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.rubenpla.develop.ikomobitrendinggif.adapter.GifGalleryAdapter;
-import com.rubenpla.develop.ikomobitrendinggif.model.GiphyModel;
-import com.rubenpla.develop.ikomobitrendinggif.util.Utils;
+import com.rubenpla.develop.ikomobitrendinggif.app.IkoApplication;
 
 import java.util.List;
 
@@ -21,26 +20,24 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import mvp.presenter.MainActivityPresenter;
-import mvp.view.MainActivityView;
 import dagger2.component.ActivityComponent;
 import dagger2.component.DaggerActivityComponent;
 import dagger2.module.ActivityModule;
+import mvp.presenter.MainActivityPresenter;
+import mvp.view.MainActivityView;
 
 public class MainActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener,
         MainActivityView {
 
-
     private ActivityComponent activityComponent;
 
-    @Inject ImageLoader imageLoader;
     @Inject RecyclerView.LayoutManager layoutManager;
 
-    private MainActivityPresenter mainPresenter;
+    @Inject MainActivityPresenter mainPresenter;
+
     private GifGalleryAdapter adapter;
 
-    @BindView(R.id.rv_images)
-    RecyclerView recyclerView;
+    @BindView(R.id.rv_images) RecyclerView recyclerView;
 
     @BindView(R.id.swipe_refresh_gif_layout)
     SwipeRefreshLayout swipeRefreshLayout;
@@ -48,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public ActivityComponent getActivityComponent() {
         if (activityComponent == null) {
             activityComponent = DaggerActivityComponent.builder()
-                    .activityModule(new ActivityModule(this, this))
+                    .activityModule(new ActivityModule(this))
                     .applicationComponent(IkoApplication.get(this).getComponent())
                     .build();
         }
@@ -64,7 +61,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         getActivityComponent().inject(this);
         ButterKnife.bind(this);
 
-        mainPresenter = new MainActivityPresenter(new GiphyModel(), new Utils()); //TODO DEPENDENCY
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
 
