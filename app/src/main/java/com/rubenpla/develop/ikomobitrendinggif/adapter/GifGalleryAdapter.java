@@ -21,8 +21,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import dagger2.annotation.ActivityContext;
-
 public class GifGalleryAdapter extends RecyclerView.Adapter<GifGalleryAdapter.MyViewHolder>  {
 
     private List<String> trendingGifsList;

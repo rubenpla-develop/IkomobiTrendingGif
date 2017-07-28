@@ -10,7 +10,7 @@ import android.widget.Toast;
 import com.rubenpla.develop.ikomobitrendinggif.R;
 import com.rubenpla.develop.ikomobitrendinggif.app.IkoApplication;
 import com.rubenpla.develop.ikomobitrendinggif.callback.OnGifsRetrievedListener;
-import com.rubenpla.develop.ikomobitrendinggif.model.GiphyModel;
+import mvp.model.GiphyModel;
 import com.rubenpla.develop.ikomobitrendinggif.util.Utils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;

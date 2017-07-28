@@ -1,18 +1,16 @@
-package dagger2.module;
+package di.module;
 
 import android.app.Activity;
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.rubenpla.develop.ikomobitrendinggif.callback.OnGifsRetrievedListener;
-import com.rubenpla.develop.ikomobitrendinggif.image.ImageLoader;
-import com.rubenpla.develop.ikomobitrendinggif.model.GiphyModel;
+import mvp.model.GiphyModel;
 import com.rubenpla.develop.ikomobitrendinggif.util.Utils;
 
 import dagger.Module;
 import dagger.Provides;
-import dagger2.annotation.ActivityContext;
+import di.annotation.ActivityContext;
 import mvp.presenter.MainActivityPresenter;
 
 @Module

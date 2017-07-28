@@ -1,10 +1,10 @@
-package dagger2.component;
+package di.component;
 
 import com.rubenpla.develop.ikomobitrendinggif.MainActivity;
 
 import dagger.Component;
-import dagger2.annotation.PerActivity;
-import dagger2.module.ActivityModule;
+import di.annotation.PerActivity;
+import di.module.ActivityModule;
 
 @PerActivity
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)

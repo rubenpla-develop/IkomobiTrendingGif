@@ -1,11 +1,11 @@
-package dagger2.module;
+package di.module;
 
 import android.app.Application;
 import android.content.Context;
 
 import dagger.Module;
 import dagger.Provides;
-import dagger2.annotation.ApplicationContext;
+import di.annotation.ApplicationContext;
 
 @Module
 public class ApplicationModule {

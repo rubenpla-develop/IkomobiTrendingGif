@@ -5,9 +5,9 @@ import android.content.Context;
 
 import com.rubenpla.develop.ikomobitrendinggif.BuildConfig;
 
-import dagger2.component.ApplicationComponent;
-import dagger2.component.DaggerApplicationComponent;
-import dagger2.module.ApplicationModule;
+import di.component.ApplicationComponent;
+import di.component.DaggerApplicationComponent;
+import di.module.ApplicationModule;
 
 public class IkoApplication extends Application {
 

@@ -20,9 +20,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import dagger2.component.ActivityComponent;
-import dagger2.component.DaggerActivityComponent;
-import dagger2.module.ActivityModule;
+import di.component.ActivityComponent;
+import di.component.DaggerActivityComponent;
+import di.module.ActivityModule;
 import mvp.presenter.MainActivityPresenter;
 import mvp.view.MainActivityView;
 

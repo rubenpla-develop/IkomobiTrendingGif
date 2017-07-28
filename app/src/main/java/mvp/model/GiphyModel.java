@@ -1,4 +1,4 @@
-package com.rubenpla.develop.ikomobitrendinggif.model;
+package mvp.model;
 
 import java.util.ArrayList;
 import java.util.List;

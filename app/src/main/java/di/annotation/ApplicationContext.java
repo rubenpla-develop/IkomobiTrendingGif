@@ -1,4 +1,4 @@
-package dagger2.annotation;
+package di.annotation;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
