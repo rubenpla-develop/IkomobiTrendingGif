@@ -10,10 +10,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-/**
- * Created by alten on 27/7/17.
- */
-
 public class Utils {
 
     public ArrayList<String> getUrlGifList(String jsonData) throws JSONException {

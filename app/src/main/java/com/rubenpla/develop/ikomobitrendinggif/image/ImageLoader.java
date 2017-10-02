@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.rubenpla.develop.ikomobitrendinggif.R;
 import com.rubenpla.develop.ikomobitrendinggif.app.IkoApplication;
 import com.rubenpla.develop.ikomobitrendinggif.callback.OnGifsRetrievedListener;
-import mvp.model.GiphyModel;
 import com.rubenpla.develop.ikomobitrendinggif.util.Utils;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
@@ -27,6 +26,8 @@ import java.util.ArrayList;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+
+import mvp.model.GiphyModel;
 
 @Singleton
 public class ImageLoader {
@@ -132,7 +133,7 @@ public class ImageLoader {
         for (int i = 0; i < array.length(); i++) {
             JSONObject o = (JSONObject) array.get(i);
             JSONObject imagesList  = (JSONObject) o.get("images");
-            JSONObject previewGif  = (JSONObject) imagesList.get("fixed_width_downsampled");
+            JSONObject previewGif  = (JSONObject) imagesList.get("fixed_width");
 
             String url = previewGif.get("url").toString();
             gifURLs.add(url);
