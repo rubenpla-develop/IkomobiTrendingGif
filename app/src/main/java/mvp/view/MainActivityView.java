@@ -13,4 +13,5 @@ import mvp.base.MpvView;
 public interface MainActivityView extends MpvView {
     void loadGifList(@NonNull List<String> list);
     void updateGifList(@NonNull List<String> list);
+    void getGiphy(String key);
 }

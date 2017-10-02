@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.rubenpla.develop.ikomobitrendinggif.adapter.GifGalleryAdapter;
 import com.rubenpla.develop.ikomobitrendinggif.app.IkoApplication;
+import com.rubenpla.develop.ikomobitrendinggif.util.Utils;
 
 import java.util.List;
 
@@ -66,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
         swipeRefreshLayout.setOnRefreshListener(this);
         mainPresenter.onAttach(this);
-        mainPresenter.getViewList(this);
+        getGiphy(IkoApplication.getGiphyApiKey());
     }
 
     @Override
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
-        mainPresenter.getViewList(this);
+        mainPresenter.getViewList(IkoApplication.getGiphyApiKey());
     }
 
     @Override
@@ -110,9 +111,26 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 if (adapter != null) {
                     adapter.setData(getApplicationContext(), list);
                 }
-
             }
         });
+    }
+
+    @Override
+    public void getGiphy(String key) {
+
+        Utils utils = new Utils();
+
+        if (key.length() == 0) {
+            showErrorDialog(R.string.img_loader_dialog_warning_title,
+                    R.string.img_loader_dialog_warning_message_body);
+            return;
+        }
+
+        if (utils.isNetworkAvailable(this)) {
+            mainPresenter.getViewList(IkoApplication.getGiphyApiKey());
+        } else {
+            showToastMessage(R.string.img_loader_dialog_warning_toast_message);
+        }
     }
 
     @Override

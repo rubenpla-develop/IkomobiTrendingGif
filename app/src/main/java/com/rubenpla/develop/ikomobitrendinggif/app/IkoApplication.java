@@ -12,6 +12,7 @@ import di.module.ApplicationModule;
 public class IkoApplication extends Application {
 
     protected ApplicationComponent applicationComponent;
+    private final String API_KEY = IkoApplication.getGiphyApiKey();
 
     public static IkoApplication get(Context context) {
         return (IkoApplication) context.getApplicationContext();

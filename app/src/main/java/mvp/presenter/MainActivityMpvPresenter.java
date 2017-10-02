@@ -1,7 +1,5 @@
 package mvp.presenter;
 
-import android.app.Activity;
-
 import mvp.base.MpvPresenter;
 
 /**
@@ -9,5 +7,5 @@ import mvp.base.MpvPresenter;
  */
 
 public interface MainActivityMpvPresenter extends MpvPresenter {
-    void getViewList(Activity context);
+    void getViewList(String key);
 }

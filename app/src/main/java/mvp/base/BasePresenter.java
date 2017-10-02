@@ -1,13 +1,10 @@
 package mvp.base;
 
-import android.content.Context;
-
 public class BasePresenter<V extends MpvView> implements MpvPresenter<V> {
 
     protected final String TAG = this.getClass().getSimpleName();
 
     protected V view;
-    protected Context context;
 
     @Override
     public void onCreate() {
@@ -17,7 +14,6 @@ public class BasePresenter<V extends MpvView> implements MpvPresenter<V> {
     @Override
     public void onAttach(V view) {
         this.view = view;
-        context = view.getViewContext();
     }
 
     @Override
