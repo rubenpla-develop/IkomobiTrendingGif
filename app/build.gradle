@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
     defaultConfig {
         applicationId "com.rubenpla.develop.ikomobitrendinggif"
         minSdkVersion 19
-        targetSdkVersion 26
+        targetSdkVersion 25
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -55,14 +55,11 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:26.+'
-    //  compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:palette-v7:26.+'
-    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.android.support:appcompat-v7:25.+'
+    compile 'com.android.support:palette-v7:25.+'
+    compile 'com.android.support:recyclerview-v7:25.+'
+
+    //General dependencies
     compile 'com.jakewharton:butterknife:8.5.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
@@ -74,4 +71,23 @@ dependencies {
     apt "com.google.dagger:dagger-compiler:2.8"
     provided 'javax.annotation:jsr250-api:1.0'
     compile 'javax.inject:javax.inject:1'
+
+    //JUNIT dependencies
+    testCompile 'junit:junit:4.12'
+
+    //ANDROID framework testing dependencies
+    androidTestCompile 'com.android.support:support-annotations:25.3.1' //test APK
+    androidTestCompile 'com.android.support.test:runner:0.5'
+    androidTestCompile 'com.android.support.test:rules:0.5'
+    androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2.2'
+
+    //General testing dependencies
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'org.hamcrest:hamcrest-library:1.1'
+    testCompile 'com.squareup.dagger:dagger:1.2.2'
+    testProvided 'com.squareup.dagger:dagger-compiler:1.2.2'
+
+    testCompile 'com.github.fabioCollini:DaggerMock:0.7.0'
+    //and/or
+    androidTestCompile 'com.github.fabioCollini:DaggerMock:0.7.0'
 }
