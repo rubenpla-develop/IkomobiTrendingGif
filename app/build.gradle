@@ -55,15 +55,15 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.+'
-    compile 'com.android.support:palette-v7:25.+'
-    compile 'com.android.support:recyclerview-v7:25.+'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:palette-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
 
     //General dependencies
     compile 'com.jakewharton:butterknife:8.5.1'
     apt 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
-    compile 'com.github.bumptech.glide:glide:3.5.2'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.squareup.okhttp:okhttp:2.2.0'
 
     //DAGGER 2 dependencies
@@ -71,6 +71,14 @@ dependencies {
     apt "com.google.dagger:dagger-compiler:2.8"
     provided 'javax.annotation:jsr250-api:1.0'
     compile 'javax.inject:javax.inject:1'
+
+    compile 'com.facebook.fresco:fresco:1.5.0'
+
+    // For animated GIF support
+    compile 'com.facebook.fresco:animated-gif:1.5.0'
+
+    // Provide the Android support library (you might already have this or a similar dependency)
+    compile 'com.android.support:support-core-utils:25.3.1'
 
     //JUNIT dependencies
     testCompile 'junit:junit:4.12'

@@ -3,6 +3,7 @@ package com.rubenpla.develop.ikomobitrendinggif.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.rubenpla.develop.ikomobitrendinggif.BuildConfig;
 
 import di.component.ApplicationComponent;
@@ -27,6 +28,7 @@ public class IkoApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .build();
         applicationComponent.inject(this);
+        Fresco.initialize(this);
     }
 
     public static String getGiphyApiKey() {
